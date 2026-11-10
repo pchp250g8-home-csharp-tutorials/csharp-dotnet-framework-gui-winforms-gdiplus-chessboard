@@ -24,21 +24,18 @@ namespace ChessBoard
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            int k = 0;
             int width = ClientSize.Width / 8;
             int height = ClientSize.Height / 8;
             Graphics g = e.Graphics;
             Rectangle[] rects = new Rectangle[32];
             g.Clear(Color.Aqua);
-            for (int i = 0; i < 8; i++)
+            for (int k = 0; k < 32; k++)
             {
-                for (int j = i % 2; j < 8; j += 2)
-                {
-                    int left = i * width;
-                    int top = j * height;
-                    rects[k] = new Rectangle(left, top, width, height);
-                    k++;
-                }
+                int i = k / 4;
+                int j = (k % 4) * 2 + (i % 2);
+                int left = i * width;
+                int top = j * height;
+                rects[k] = new Rectangle(left, top, width, height);
             }
             g.FillRectangles(Brushes.Brown, rects);
         }
